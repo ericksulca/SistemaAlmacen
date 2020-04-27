@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block imports %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $( "#inp-Nombre" ).focus();
+
+        $('#btn-Guardar').click(function(){
+            agregar();
+        });
+    });
+
+    function agregar(){
+        //var imagen = new FormData($("#imagen")[0]);
+        var nombre = $('#inp-Nombre').val();
+        var descripcion = $('#inp-Descripcion').val();
+        var categorias = $('#inp-Categorias').val();
+        var cantidad = $('#inp-Cantidad').val();
+        var codigoBarra = $('#inp-CodigoBarra').val();
+        var miniCodigo = $('#inp-MiniCodigo').val();
+        var imagen = document.getElementById('Imagen');
+        //var imagen = "imagen";
+
+        //alert(nombre+descripcion+cantidad+categorias+codigoBarra+miniCodigo);
+        //var imagen = new FormData(document.getElementById("Imagen"));
+        var datos = {Nombre: nombre, Descripcion :descripcion, Categorias: categorias, Cantidad: cantidad, CodigoBarra: codigoBarra, MiniCodigo: miniCodigo, Imagen2: imagen};
+        var datos = new FormData(imagen);
+         //console.log(imagen);
+        //datos.append(imagen);
+        var sendData = JSON.stringify(datos);
+        console.log(datos);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/producto/nuevo/",
+            data: sendData,
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            cache: false,
+            CrossDomain: true,
+
+            success: function (result) {
+                var id_producto = result["id_producto"];
+                alert('Producto registrado!');
+                //location.reload(true);
+            }
+        });
+
+    }
+
+</script>
+
+
+{% endblock %}
+
+{% block title %}
+Listar Pedidos
+{% endblock %}
+
+{% block content %}
+<div class="page-content-wrapper">
+
+    <div class="content custom-scrollbar ps ps--active-y">
+
+        <div id="e-commerce-product" class="page-layout simple tabbed">
+            
+            <!-- HEADER -->
+            <div class="page-header bg-primary text-auto row no-gutters align-items-center justify-content-between p-6">
+
+                <div class="row no-gutters align-items-center">
+
+                    <a href="apps-e-commerce-products.html" class="btn btn-icon mr-4 fuse-ripple-ready">
+                        <i class="icon icon-arrow-left"></i>
+                    </a>
+
+                    <div class="product-image mr-4">
+                        <img src="/static/assets/images/ecommerce/product-image-placeholder.png">
+                    </div>
+
+                    <div>Nuevo Producto</div>
+                </div>
+
+                <button type="button" class="btn btn-light fuse-ripple-ready" id="btn-Guardar">
+                    Guardar
+                </button>
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT -->
+            <div class="page-content">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link btn fuse-ripple-ready active show" id="basic-info-tab" data-toggle="tab" href="#basic-info-tab-pane" role="tab" aria-controls="basic-info-tab-pane" aria-expanded="true" aria-selected="true">Información de producto</a>
+                    
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane fade active show" id="basic-info-tab-pane" role="tabpanel" aria-labelledby="basic-info-tab">
+
+                        <div class="card p-6">
+                            <form method="POST" class="post-form" enctype="multipart/form-data"> 
+                                <div class="form-group">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-light fuse-ripple-ready">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+            <!-- / CONTENT -->
+        </div>
+    </div>
+</div>
+{% endblock %}

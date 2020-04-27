@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block imports %}
+
+<script type="text/javascript">
+    
+</script>
+
+{% endblock %}
+
+{% block title %}
+Listar Pedidos
+{% endblock %}
+
+{% block content %}
+<div class="page-content-wrapper">
+
+    <!-- HEADER -->
+    <div class="page-header light-fg row no-gutters align-items-center justify-content-between">
+
+        <!-- APP TITLE -->
+        <div class="col-12 col-sm">
+
+            <div class="logo row no-gutters justify-content-center align-items-start justify-content-sm-start">
+                <div class="logo-icon mr-3 mt-1">
+                    <i class="icon-cube-outline s-6"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="h4">Productos</div>
+                    <div class="">Total Productos: 20</div>
+                </div>
+            </div>
+
+        </div>
+        <!-- / APP TITLE -->
+
+        <!-- SEARCH -->
+        <div class="col search-wrapper px-2">
+
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-icon fuse-ripple-ready">
+                        <i class="icon icon-magnify"></i>
+                    </button>
+                </span>
+                <input id="products-search-input" type="text" class="form-control" placeholder="Buscar" aria-label="Buscar">
+            </div>
+
+        </div>
+        <!-- / SEARCH -->
+
+        <div class="col-auto">
+            <a href="/producto/nuevo/" class="btn btn-light fuse-ripple-ready">Agrenar Nuevo Producto</a>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <div class="page-content-card">
+
+        <div class="page-content">
+            <table id="e-commerce-products-table" class="table dataTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">ID</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Imagen</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Nombre</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Categoría</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Cantidad</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Activo</span>
+                            </div>
+                        </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <h1>{{ object.nombre }}</h1>
+                    {% for oProducto in oProductos %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>
+                                    <img class="product-image" src="{{oProducto.imagen.url}}" width="150" height="150">
+                                </td>
+                                <td>{{oProducto.nombre}}</td>
+                                <td>{{oProducto.categoria}}</td>
+                                <td>{{oProducto.cantidad}}</td>
+                                <td>
+                                    {% if oProducto.estado == True %}
+                                        <i class="icon-checkbox-marked-circle text-success"></i>
+                                    {% else %}
+                                        <i class="icon-cancel text-danger""></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                    {% endfor %}  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="es-pe">
+
+<head>
+    <title>DAES - {% block title %}
+         {% endblock %}
+    </title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/favicon.ico" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700italic,700,900,900italic" rel="stylesheet">
+
+    <!-- STYLESHEETS -->
+    <style type="text/css">
+            [fuse-cloak],
+            .fuse-cloak {
+                display: none !important;
+            }
+        </style>
+
+    <!-- Icons.css -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/icons/fuse-icon-font/style.css">
+    <!-- Animate.css -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/node_modules/animate.css/animate.min.css">
+    <!-- PNotify -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/node_modules/pnotify/dist/PNotifyBrightTheme.css">
+    <!-- Nvd3 - D3 Charts -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/node_modules/nvd3/build/nv.d3.min.css" />
+    <!-- Perfect Scrollbar -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/node_modules/perfect-scrollbar/css/perfect-scrollbar.css" />
+    <!-- Fuse Html -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/fuse-html/fuse-html.min.css" />
+    <!-- Main CSS -->
+    <link type="text/css" rel="stylesheet" href="/static/assets/css/main.css">
+    <!-- / STYLESHEETS -->
+
+    <!-- JAVASCRIPT -->
+    <!-- jQuery -->
+    <script type="text/javascript" src="/static/assets/node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Mobile Detect -->
+    <script type="text/javascript" src="/static/assets/node_modules/mobile-detect/mobile-detect.min.js"></script>
+    <!-- Perfect Scrollbar -->
+    <script type="text/javascript" src="/static/assets/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+    <!-- Popper.js -->
+    <script type="text/javascript" src="/static/assets/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="/static/assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Nvd3 - D3 Charts -->
+    <script type="text/javascript" src="/static/assets/node_modules/d3/d3.min.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/nvd3/build/nv.d3.min.js"></script>
+    <!-- Data tables -->
+    <script type="text/javascript" src="/static/assets/node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/datatables-responsive/js/dataTables.responsive.js"></script>
+    <!-- PNotify -->
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotify.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyStyleMaterial.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyButtons.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyCallbacks.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyMobile.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyHistory.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyDesktop.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyConfirm.js"></script>
+    <script type="text/javascript" src="/static/assets/node_modules/pnotify/dist/iife/PNotifyReference.js"></script>
+    <!-- Fuse Html -->
+    <script type="text/javascript" src="/static/assets/fuse-html/fuse-html.min.js"></script>
+    <!-- Main JS -->
+    <script type="text/javascript" src="/static/assets/js/main.js"></script>
+
+    <!-- / JAVASCRIPT -->
+    {% block imports %}
+    {% endblock %}
+</head>
+
+<body class="layout layout-vertical layout-right-navigation layout-below-toolbar layout-below-footer">
+    <main>
+        <div id="wrapper">
+            <div class="content-wrapper">
+                <nav id="toolbar" class="bg-white">
+
+                    <div class="row no-gutters align-items-center flex-nowrap">
+
+                        <div class="col">
+
+                            <div class="row no-gutters align-items-center flex-nowrap">
+
+                                <div class="shortcuts-wrapper row no-gutters align-items-center px-0 px-sm-2">
+
+                                    <div class="shortcuts row no-gutters align-items-center d-none d-md-flex">
+
+                                        <a href="apps-chat.html" class="shortcut-button btn btn-icon mx-1">
+                                            <i class="icon icon-hangouts"></i>
+                                        </a>
+
+                                        <a href="apps-contacts.html" class="shortcut-button btn btn-icon mx-1">
+                                            <i class="icon icon-account-box"></i>
+                                        </a>
+
+                                        <a href="apps-mail.html" class="shortcut-button btn btn-icon mx-1">
+                                            <i class="icon icon-email"></i>
+                                        </a>
+
+                                    </div>
+
+                                    <div class="add-shortcut-menu-button dropdown px-1 px-sm-3">
+
+                                        <div class="dropdown-toggle btn btn-icon" role="button" id="dropdownShortcutMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon icon-star text-amber-600"></i>
+                                        </div>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownShortcutMenu">
+
+                                            <a class="dropdown-item" href="#">
+                                                <div class="row no-gutters align-items-center justify-content-between flex-nowrap">
+                                                    <div class="row no-gutters align-items-center flex-nowrap">
+                                                        <i class="icon icon-calendar-today"></i>
+                                                        <span class="px-3">Calendario</span>
+                                                    </div>
+                                                    <i class="icon icon-pin s-5 ml-2"></i>
+                                                </div>
+                                            </a>
+
+                                            <a class="dropdown-item" href="#">
+                                                <div class="row no-gutters align-items-center justify-content-between flex-nowrap">
+                                                    <div class="row no-gutters align-items-center flex-nowrap">
+                                                        <i class="icon icon-folder"></i>
+                                                        <span class="px-3">Archos</span>
+                                                    </div>
+                                                    <i class="icon icon-pin s-5 ml-2"></i>
+                                                </div>
+                                            </a>
+
+                                            <a class="dropdown-item" href="#">
+                                                <div class="row no-gutters align-items-center justify-content-between flex-nowrap">
+                                                    <div class="row no-gutters align-items-center flex-nowrap">
+                                                        <i class="icon icon-checkbox-marked"></i>
+                                                        <span class="px-3">To-Do</span>
+                                                    </div>
+                                                    <i class="icon icon-pin s-5 ml-2"></i>
+                                                </div>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="toolbar-separator"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+
+                            <div class="row no-gutters align-items-center justify-content-end">
+
+                                <div class="user-menu-button dropdown">
+
+                                    <div class="dropdown-toggle ripple row align-items-center no-gutters px-2 px-sm-4" role="button" id="dropdownUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="avatar-wrapper">
+                                            <img class="avatar" src="/static/assets/images/avatars/profile.jpg">
+                                            <i class="status text-green icon-checkbox-marked-circle s-4"></i>
+                                        </div>
+                                        <span class="username mx-3 d-none d-md-block">William Morales</span>
+                                    </div>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownUserMenu">
+
+                                        <a class="dropdown-item" href="#">
+                                            <div class="row no-gutters align-items-center flex-nowrap">
+                                                <i class="icon-account"></i>
+                                                <span class="px-3">Mi perfil</span>
+                                            </div>
+                                        </a>
+
+                                        <a class="dropdown-item" href="#">
+                                            <div class="row no-gutters align-items-center flex-nowrap">
+                                                <i class="icon-email"></i>
+                                                <span class="px-3">Inbox</span>
+                                            </div>
+                                        </a>
+
+                                        <a class="dropdown-item" href="#">
+                                            <div class="row no-gutters align-items-center flex-nowrap">
+                                                <i class="status text-green icon-checkbox-marked-circle"></i>
+                                                <span class="px-3">En linea</span>
+                                            </div>
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+
+                                        <a class="dropdown-item" href="#">
+                                            <div class="row no-gutters align-items-center flex-nowrap">
+                                                <i class="icon-logout"></i>
+                                                <span class="px-3">Logout</span>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <div class="toolbar-separator"></div>
+
+                                <button type="button" class="search-button btn btn-icon">
+                                    <i class="icon icon-magnify"></i>
+                                </button>
+
+                                <div class="toolbar-separator"></div>
+
+                                <button type="button" class="quick-panel-button btn btn-icon" data-fuse-bar-toggle="quick-panel-sidebar">
+                                    <i class="icon icon-format-list-bulleted"></i>
+                                </button>
+                                <div class="toolbar-separator d-block d-lg-none"></div>
+
+                                <button type="button" class="toggle-aside-button btn btn-icon d-block d-lg-none" data-fuse-bar-toggle="aside">
+                                    <i class="icon icon-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="content custom-scrollbar">
+                    <div id="e-commerce-orders" class="page-layout carded full-width">
+                        <div class="top-bg bg-primary"></div>
+                        <!-- CONTENT -->                    
+                        {% block content %}
+                        
+
+
+
+
+                        {% endblock %}
+                        <!-- / CONTENT -->
+                    </div>
+
+                    <script type="text/javascript" src="/static/assets/js/apps/e-commerce/orders/orders.js"></script>
+
+                </div>
+                
+            </div>
+            <aside id="aside" class="aside aside-right" data-fuse-bar="aside" data-fuse-bar-media-step="md" data-fuse-bar-position="right">
+                <div class="aside-content bg-primary-700 text-auto">
+
+                    <div class="aside-toolbar">
+
+                        <div class="logo">
+                            <span class="logo-icon">W</span>
+                            <span class="logo-text">William</span>
+                        </div>
+
+                        <button id="toggle-fold-aside-button" type="button" class="btn btn-icon d-none d-lg-block" data-fuse-aside-toggle-fold>
+                            <i class="icon icon-backburger"></i>
+                        </button>
+
+                    </div>
+
+                    <ul class="nav flex-column custom-scrollbar" id="sidenav" data-children=".nav-item">
+
+                        <li class="subheader">
+                            <span>APPS</span>
+                        </li>
+
+                        <li class="nav-item" role="tab" id="heading-dashboards">
+
+                            <a class="nav-link ripple with-arrow collapse" data-toggle="collapse" data-target="#collapse-dashboards" href="#" aria-expanded="false" aria-controls="collapse-dashboards">
+
+                                <i class="icon s-4 icon-tile-four"></i>
+
+                                <span>Control de Inventario</span>
+                            </a>
+                            <ul id="collapse-dashboards" class='collapse ' role="tabpanel" aria-labelledby="heading-dashboards" data-children=".nav-item" >
+
+                                <li class="nav-item">
+                                    <a class="nav-link ripple active" href="/producto/nuevo" data-url="apps-e-commerce-orders.html">
+
+                                        <span>Nuevo producto</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link ripple " href="/producto/listar/" data-url="apps-e-commerce-orders.html">
+
+                                        <span>Ver inventario</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item" role="tab" id="heading-ecommerce">
+
+                            <a class="nav-link ripple with-arrow  show" data-toggle="collapse" data-target="#collapse-ecommerce" href="#" aria-expanded="true" aria-controls="collapse-ecommerce">
+
+                                <i class="icon s-4 icon-cart"></i>
+
+                                <span>Pedidos</span>
+                            </a>
+                            <ul id="collapse-ecommerce" class='collapse ' role="tabpanel" aria-labelledby="heading-ecommerce" data-children=".nav-item">
+
+                                <li class="nav-item">
+                                    <a class="nav-link ripple " href="apps-e-commerce-products.html" data-url="apps-e-commerce-orders.html">
+
+                                        <span>Búsqueda</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link ripple " href="/pedido/listar/" data-url="apps-e-commerce-orders.html">
+
+                                        <span>Pedidos </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                       
+                </div>
+
+            </aside>
+            <div class="quick-panel-sidebar custom-scrollbar" fuse-cloak data-fuse-bar="quick-panel-sidebar" data-fuse-bar-position="right">
+                <div class="list-group" class="date">
+
+                    <div class="list-group-item subheader">TODAY</div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="text-muted">
+
+                            <div class="h1"> Friday</div>
+
+                            <div class="h2 row no-gutters align-items-start">
+                                <span> 5</span>
+                                <span class="h6">th</span>
+                                <span> May</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="list-group">
+
+                    <div class="list-group-item subheader">Events</div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="list-item-content">
+                            <h3>Group Meeting</h3>
+                            <p>In 32 Minutes, Room 1B</p>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="list-item-content">
+                            <h3>Public Beta Release</h3>
+                            <p>11:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="list-item-content">
+                            <h3>Dinner with David</h3>
+                            <p>17:30 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="list-item-content">
+                            <h3>Q&amp;A Session</h3>
+                            <p>20:30 PM</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="list-group">
+
+                    <div class="list-group-item subheader">Notes</div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="list-item-content">
+                            <h3>Best songs to listen while working</h3>
+                            <p>Last edit: May 8th, 2015</p>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item two-line">
+
+                        <div class="list-item-content">
+                            <h3>Useful subreddits</h3>
+                            <p>Last edit: January 12th, 2015</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="list-group">
+
+                    <div class="list-group-item subheader">Quick Settings</div>
+
+                    <div class="list-group-item">
+
+                        <div class="list-item-content">
+                            <h3>Notifications</h3>
+                        </div>
+
+                        <div class="secondary-container">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" />
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="list-group-item">
+
+                        <div class="list-item-content">
+                            <h3>Cloud Sync</h3>
+                        </div>
+
+                        <div class="secondary-container">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" />
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="list-group-item">
+
+                        <div class="list-item-content">
+                            <h3>Retro Thrusters</h3>
+                        </div>
+
+                        <div class="secondary-container">
+
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" />
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

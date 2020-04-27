@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block imports %}
+
+<script type="text/javascript">
+    
+</script>
+
+{% endblock %}
+
+{% block title %}
+Listar Pedidos
+{% endblock %}
+
+{% block content %}
+<div class="page-content-wrapper">
+
+    <!-- HEADER -->
+    <div class="page-header light-fg row no-gutters align-items-center justify-content-between">
+
+        <!-- APP TITLE -->
+        <div class="col-12 col-sm">
+
+            <div class="logo row no-gutters justify-content-center align-items-start justify-content-sm-start">
+                <div class="logo-icon mr-3 mt-1">
+                    <i class="icon-cart-outline s-6"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="h4">Pedidos</div>
+                    <div class="">Total pedidos pendientes: 14</div>
+                </div>
+            </div>
+
+        </div>
+        <!-- / APP TITLE -->
+
+        <!-- SEARCH -->
+        <div class="col search-wrapper px-2">
+
+            <div class="input-group">
+                
+            </div>
+
+        </div>
+        <!-- / SEARCH -->
+
+        <div class="col-auto">
+            <a href="/pedido/nuevo/" class="btn btn-light fuse-ripple-ready">Agrenar Nuevo Pedido</a>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <div class="page-content-card">
+
+        <div class="page-content">
+            <table id="e-commerce-products-table" class="table dataTable">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">ID</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Fecha de Pedido</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Productos</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Cliente</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Estado</span>
+                            </div>
+                        </th>
+
+                        <th>
+                            <div class="table-header">
+                                <span class="column-title">Acciones</span>
+                            </div>
+                        </th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for oPedido in oPedidos %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{oPedido.fechainicio}}</td>
+                                <td>
+                                	<ul>
+										{% for producto in 	oPedido.productos.all %}
+											<li>
+												{{ producto.nombre }}
+											</li>
+										{% endfor %}
+									</ul>
+                                </td>
+                                <td>{{oPedido.cliente.nombre}}</td>
+                                <td>
+                                    {% if oPedido.estado == True %}
+                                        <i class="icon-checkbox-marked-circle text-success"></i>
+                                    {% else %}
+                                        <i class="icon-cancel text-danger""></i>
+                                    {% endif %}
+                                </td>
+                                <td>Acciones</td>
+                            </tr>
+                    {% endfor %}  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

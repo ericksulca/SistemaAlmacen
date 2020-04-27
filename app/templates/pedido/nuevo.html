@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block imports %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      
+    });
+
+</script>
+
+
+{% endblock %}
+
+{% block title %}
+Nuevo Pedido
+{% endblock %}
+
+{% block content %}
+<div class="page-content-wrapper">
+
+    <div class="content custom-scrollbar ps ps--active-y">
+
+        <div id="e-commerce-product" class="page-layout simple tabbed">
+            
+            <!-- HEADER -->
+            <div class="page-header bg-primary text-auto row no-gutters align-items-center justify-content-between p-6">
+
+                <div class="row no-gutters align-items-center">
+
+                    <a href="apps-e-commerce-products.html" class="btn btn-icon mr-4 fuse-ripple-ready">
+                        <i class="icon icon-arrow-left"></i>
+                    </a>
+
+                    <div class="product-image mr-4">
+                        <img src="/static/assets/images/ecommerce/product-image-placeholder.png">
+                    </div>
+
+                    <div>Nuevo Pedido</div>
+                </div>
+
+                <button type="button" class="btn btn-light fuse-ripple-ready" id="btn-Guardar">
+                    Guardar
+                </button>
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT -->
+            <div class="page-content">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link btn fuse-ripple-ready active show" id="basic-info-tab" data-toggle="tab" href="#basic-info-tab-pane" role="tab" aria-controls="basic-info-tab-pane" aria-expanded="true" aria-selected="true">Información de pedido</a>
+                    
+                    </li>
+
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane fade active show" id="basic-info-tab-pane" role="tabpanel" aria-labelledby="basic-info-tab">
+
+                        <div class="card p-6">
+                            <form method="POST" class="post-form" enctype="multipart/form-data"> 
+                                <div class="form-group">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-light fuse-ripple-ready">Guardar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+            <!-- / CONTENT -->
+        </div>
+    </div>
+</div>
+{% endblock %}
